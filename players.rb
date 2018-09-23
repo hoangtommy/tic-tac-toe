@@ -9,14 +9,14 @@ class Player
 		@marker = marker
 	end
 
-	def move(game, board)
+	def move(board)
 		puts "#{self.name}, select a position to place your #{self.marker}"
 		position = gets.chomp
-		until position.to_i.between?(1,9)
+		until position.to_i.between?(0,8)
 			puts "Please type in an integer that represents an open position"
 			position = gets.chomp
 		end
-		board.update_board(game, position.to_i, self.marker)
+		board.update_board(position.to_i, self)
 	end
 
 end

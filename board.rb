@@ -1,18 +1,18 @@
 class Board
+	attr_reader :board
 
 	def initialize
 		make_board
 	end
 
 	def make_board
-		@board = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+		@board = [0, 1, 2, 3, 4, 5, 6, 7, 8] #is this instance variable @board the same as the variable inside class Game?
 		display_board(@board)
 	end
 
-	def update_board(game, position, marker)
-		@board[position] = marker
+	def update_board(position, player)
+		@board[position] = player.marker
 		display_board(@board)
-		game.update
 		# 	# to-do: create module or method to process existing marker error
 		# 	#, eg. game.error
 	end
