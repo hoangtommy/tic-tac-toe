@@ -19,7 +19,4 @@ class Player
 		board.update_board(game, position.to_i, self.marker)
 	end
 
-	def check_move(position)
-	end
-
 end

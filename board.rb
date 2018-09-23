@@ -4,23 +4,20 @@ class Board
 		make_board
 	end
 
-	# private
+	def make_board
+		@board = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+		display_board(@board)
+	end
 
-		def make_board
-			@board = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-			display_board(@board)
-		end
+	def update_board(game, position, marker)
+		@board[position] = marker
+		display_board(@board)
+		game.update
+		# 	# to-do: create module or method to process existing marker error
+		# 	#, eg. game.error
+	end
 
-		def update_board(game, position, marker)
-			@board[position] = marker unless @board[position] == "x" || @board[position] == "o"
-			display_board(@board)
-			# if @board.include?(position)
-			# else 
-			# 	puts "error" 
-			# 	# to-do: create module or method to process position error or existing marker error
-			# 	#, eg. game.error
-			# end
-		end
+	private
 
 		def display_board(board)
 			puts ""
