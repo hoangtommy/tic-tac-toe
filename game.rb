@@ -3,12 +3,16 @@ class Game
 	require "./board.rb" 
 	
 	def initialize
+		@player1 = nil
+		@player2 = nil
+		@board = nil
+
 		setup_players
 		setup_board
 		play_game
 	end
 
-	# private
+	private
 
 		def setup_players
 			puts "Welcome to Tic-Tac-Toe"
@@ -25,11 +29,11 @@ class Game
 		end
 
 		def setup_board
-			board = Board.new
+			@board = Board.new
 		end
 
 		def play_game
-			puts @player2.name
+			@player2.move(self, @board)
 		end
 
 		def end_game
