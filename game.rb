@@ -36,9 +36,9 @@ class Game
 		def play_game
 			until @game_over
 				@player2.move(@board)
-				# check_status(@player2)
+				check_status(@player2)
 				@player1.move(@board)
-				# check_status(@player1)
+				check_status(@player1)
 			end
 		end
 
@@ -51,22 +51,21 @@ class Game
 				#diagonal
 				[0, 4, 8], [2, 4, 6]
 			]
-	
-	#@board["x", 1, 2, 3, "o", 5, 6, 7, 8]
 
-			
+			status = winning_combos.any? do |combo|
+				combo.all? do |index|
+					@board.board[index] == player.marker
+				end
+			end
 
-			#if @board[winning_combox[idx]]
-			if winning_combos.include?([player.marker, player.marker, player.marker])
+			if status
 				end_game(player)
-				@game_over = true
-			else
-				play_game
 			end
 		end
 
 		def end_game(player)
 			puts "#{player.name} won!"
+			@game_over = true
 			puts ""
 			puts "do you want to play a new game?"
 			response = gets.chomp
@@ -74,6 +73,7 @@ class Game
 				Game.new
 			else
 				puts "the game is over"
+				exit
 			end
 		end
 
