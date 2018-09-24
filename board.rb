@@ -13,8 +13,6 @@ class Board
 	def update_board(position, player)
 		@board[position] = player.marker
 		display_board(@board)
-		# 	# to-do: create module or method to process existing marker error
-		# 	#, eg. game.error
 	end
 
 	private

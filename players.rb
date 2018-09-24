@@ -10,15 +10,20 @@ class Player
 	end
 
 	def move(board)
+		position = get_move(board)
+		board.update_board(position.to_i, self)
+	end
+
+	def get_move(board)
+		p board.board
 		puts "#{self.name}, select a position to place your #{self.marker}"
 		position = gets.chomp
 
-		# to-do: check that player does not mark in existing position
-		until position.to_i.between?(0,8)
+		until position =~ /^[0-8]{1}$/ && (board.board[position.to_i] != "x" && board.board[position.to_i] != "o")
 			puts "Please type in an integer that represents an open position"
 			position = gets.chomp
 		end
-		board.update_board(position.to_i, self)
+		position
 	end
 
 end
