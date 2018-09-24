@@ -12,6 +12,8 @@ class Player
 	def move(board)
 		puts "#{self.name}, select a position to place your #{self.marker}"
 		position = gets.chomp
+
+		# to-do: check that player does not mark in existing position
 		until position.to_i.between?(0,8)
 			puts "Please type in an integer that represents an open position"
 			position = gets.chomp

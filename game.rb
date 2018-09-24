@@ -7,6 +7,7 @@ class Game
 		@player2 = nil
 		@board = nil
 		@game_over = false
+		@turn = 0
 
 		setup_players
 		create_board
@@ -43,6 +44,7 @@ class Game
 		end
 
 		def check_status(player)
+
 			winning_combos = [
 				#horizontal
 				[0, 1, 2], [3, 4, 5], [6, 7, 8],
@@ -61,11 +63,22 @@ class Game
 			if status
 				end_game(player)
 			end
+			
+			@turn += 1
+			end_game("tie") if @turn >= 9
 		end
 
 		def end_game(player)
-			puts "#{player.name} won!"
+			if player == "tie"
+				puts "It's a tie."
+			else 
+				puts "#{player.name} won!"
+			end
 			@game_over = true
+			reset_game
+		end
+
+		def reset_game
 			puts ""
 			puts "do you want to play a new game?"
 			response = gets.chomp
@@ -76,7 +89,6 @@ class Game
 				exit
 			end
 		end
-
 end
 
 one = Game.new
