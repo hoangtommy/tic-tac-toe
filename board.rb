@@ -6,6 +6,9 @@ class Board
     make_board
   end
 
+  # This is dangerous as someone can mutate the original board
+  # Consider making this private
+  # consider making a display module or class to display all things to the screen
   def make_board
     @board = [
       0, 1, 2,
