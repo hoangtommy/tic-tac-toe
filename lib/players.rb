@@ -1,6 +1,6 @@
 # Creates player objects
 class Player
-  require './board.rb'
+  require_relative 'board'
 
   attr_reader :name, :marker
 

@@ -1,7 +1,7 @@
 # Create new game instance
 class Game
-  require './players.rb'
-  require './board.rb'
+  require_relative 'players'
+  require_relative 'board'
 
   def initialize
     @player1 = nil
