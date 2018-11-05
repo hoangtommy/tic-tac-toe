@@ -4,6 +4,7 @@ class Board
 
   def initialize
     make_board
+    display_board(@board)
   end
 
   # This is dangerous as someone can mutate the original board
@@ -15,7 +16,6 @@ class Board
       3, 4, 5,
       6, 7, 8
     ] # is this instance variable @board the same?
-    display_board(@board)
   end
   
   def update_board(position, player)
